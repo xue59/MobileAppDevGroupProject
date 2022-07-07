@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.TennisMateAndCourt" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#0E873E</item>
-        <item name="colorPrimaryVariant">#0E873E</item>
+        <item name="colorPrimary">@color/green_heavy</item>
+        <item name="colorPrimaryVariant">@color/green_light</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
