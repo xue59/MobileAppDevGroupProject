@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "715125260842",
+    "project_id": "tennismateandcourt",
+    "storage_bucket": "tennismateandcourt.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:715125260842:android:547724b7a83160b7657953",
+        "android_client_info": {
+          "package_name": "edu.neu.madscourse.tennismateandcourt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "715125260842-9l03ct66f285j86q5nv1frfogggmph66.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDewtlAsB94VPrnjcQIcLwqw-NmWK6AUFo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "715125260842-9l03ct66f285j86q5nv1frfogggmph66.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
