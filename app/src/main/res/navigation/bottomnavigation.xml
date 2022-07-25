@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottomnavigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="edu.neu.madscourse.tennismateandcourt.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="edu.neu.madscourse.tennismateandcourt.SearchFragment"
+        android:label="Search"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="edu.neu.madscourse.tennismateandcourt.MapFragment"
+        android:label="Map"
+        tools:layout="@layout/fragment_map" />
+    <fragment
+        android:id="@+id/friendFragment"
+        android:name="edu.neu.madscourse.tennismateandcourt.FriendFragment"
+        android:label="Friend"
+        tools:layout="@layout/fragment_friend" />
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="edu.neu.madscourse.tennismateandcourt.SettingFragment"
+        android:label="Setting"
+        tools:layout="@layout/fragment_setting" />
+</navigation>
