@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="green_light">#3FED18</color>
     <color name="green_heavy">#0E873E</color>
+    <color name="privacy_policy_color">#999592</color>
+    <color name="line_1_color">#7C7C7C</color>
 </resources>
