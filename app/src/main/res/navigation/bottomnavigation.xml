@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottomnavigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/shakeFragment">
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="edu.neu.madscourse.tennismateandcourt.HomeFragment"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/shakeFragment"
+        android:name="edu.neu.madscourse.tennismateandcourt.ShakeFragment"
+        tools:layout="@layout/fragment_shake" />
     <fragment
         android:id="@+id/searchFragment"
         android:name="edu.neu.madscourse.tennismateandcourt.SearchFragment"
