@@ -8,6 +8,7 @@
     <fragment
         android:id="@+id/shakeFragment"
         android:name="edu.neu.madscourse.tennismateandcourt.ShakeFragment"
+        android:label="Shake"
         tools:layout="@layout/fragment_shake" />
     <fragment
         android:id="@+id/searchFragment"
