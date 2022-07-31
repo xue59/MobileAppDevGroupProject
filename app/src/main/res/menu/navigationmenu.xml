@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/shakeFragment"
+        android:id="@+id/shakeFindFragment"
         android:icon="@drawable/ic_baseline_sports_tennis_24"
         android:title="Shake" />
     <item
