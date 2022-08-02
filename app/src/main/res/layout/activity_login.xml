@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".LoginActivity">
 
     <ImageView
         android:id="@+id/app_icon"
@@ -16,36 +18,36 @@
         android:id="@+id/google_login_view"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/slogan_tv"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="48dp"
-        app:cardElevation="8dp"
-        >
+        app:cardElevation="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="12dp">
 
-            <ImageView android:id="@+id/google"
+            <ImageView
+                android:id="@+id/google"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/continue_with_google_text"
+                android:src="@drawable/google"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/google"/>
+                app:layout_constraintEnd_toStartOf="@id/continue_with_google_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:paddingLeft="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:id="@+id/continue_with_google_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
                 android:text="@string/continue_with_google"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
@@ -54,11 +56,10 @@
         android:id="@+id/fb_login_view"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/google_login_view"
-        app:cardElevation="8dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        >
+        app:cardElevation="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
@@ -69,22 +70,22 @@
                 android:id="@+id/fb"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/continue_with_facebook_text"
+                android:src="@drawable/fb"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/fb"/>
+                app:layout_constraintEnd_toStartOf="@id/continue_with_facebook_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:paddingLeft="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:id="@+id/continue_with_facebook_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
                 android:text="@string/continue_with_facebook"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
@@ -144,23 +145,54 @@
         android:fontFamily="sans-serif-medium"
         />
 
-    <TextView
-        android:id="@+id/or_tv"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/horizontal_divider"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="OR"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/email_or_phone_login_view"
-        android:layout_marginTop="16dp"
-        android:textSize="14sp"
-        android:textColor="@color/line_1_color"/>
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:id="@+id/or_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OR"
+            android:textColor="@color/line_1_color"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/horizontal_divider_left"
+            android:layout_width="150dp"
+            android:layout_height="1dp"
+            android:src="@drawable/line_1_shape"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/or_tv"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/horizontal_divider_right"
+            android:layout_width="150dp"
+            android:layout_height="1dp"
+            android:src="@drawable/line_1_shape"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/or_tv"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.cardview.widget.CardView
         android:layout_width="300dp"
         app:cardElevation="8dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/or_tv"
+        android:layout_below="@id/horizontal_divider"
         android:id="@+id/create_an_acc"
         android:layout_marginTop="16dp"
         app:cardBackgroundColor="@color/green_heavy"

@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "715125260842",
+    "firebase_url": "https://tennismateandcourt-default-rtdb.firebaseio.com",
     "project_id": "tennismateandcourt",
     "storage_bucket": "tennismateandcourt.appspot.com"
   },
