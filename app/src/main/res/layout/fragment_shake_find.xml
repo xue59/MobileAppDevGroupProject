@@ -10,7 +10,8 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Shake your phone to determine who to serve the ball!" />
+        android:text="Shake your phone to determine who to serve the ball!"
+        android:gravity="center"/>
 
     <ImageView
         android:id="@+id/imageView5"
