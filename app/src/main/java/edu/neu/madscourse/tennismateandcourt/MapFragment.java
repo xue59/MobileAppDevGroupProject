@@ -20,14 +20,22 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class MapFragment extends Fragment{
+import java.util.ArrayList;
+import java.util.List;
+
+public class MapFragment extends Fragment {
     private MapViewModel mViewModel;
     GoogleMap map;
+
+    private RecyclerView recyclerView;
+    private TennisCourtAdapter adapter;
+    private List<TennisCourtModel> listTennisCourts = new ArrayList();
 
     public static MapFragment newInstance() {
         return new MapFragment();
@@ -37,6 +45,18 @@ public class MapFragment extends Fragment{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_map, container, false);
+        recyclerView = rootView.findViewById(R.id.tennis_courts_recycler_view);
+        TennisCourtModel court1= new TennisCourtModel();
+        court1.id = 1;
+        court1.name = "First Tennis Court";
+        TennisCourtModel court2= new TennisCourtModel();
+        court2.id = 2;
+        court2.name = "Second Tennis Court";
+        listTennisCourts.add(court1);
+        listTennisCourts.add(court2);
+        adapter = new TennisCourtAdapter(this.getContext(), listTennisCourts);
+        recyclerView.setAdapter(adapter);
+
 
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(new OnMapReadyCallback() {
@@ -51,8 +71,6 @@ public class MapFragment extends Fragment{
         return rootView;
 
     }
-
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
