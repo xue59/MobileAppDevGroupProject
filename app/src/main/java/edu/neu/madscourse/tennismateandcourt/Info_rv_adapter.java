@@ -10,11 +10,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Info_rv_adapter extends RecyclerView.Adapter<Info_rv_adapter.ViewHolder> {
     Context context;
     List<String> tennisCourtModel;
+    List<String> item_key_list = Arrays.asList(new String[]{"ID: ","Name: ", "Rating: ", "Address: ", "Hours Of Operations: ", "Website: ", "Phone: ", "Las update time: "});
+
+
     public  Info_rv_adapter(Context context, List<String>  tennisCourtModel){
         this.context=context;
         this.tennisCourtModel=tennisCourtModel;
@@ -30,8 +34,8 @@ public class Info_rv_adapter extends RecyclerView.Adapter<Info_rv_adapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull Info_rv_adapter.ViewHolder holder, int position) {
         String info_string = tennisCourtModel.get(position);
+        holder.item_key.setText(item_key_list.get(position));
         holder.item_value.setText(info_string);
-        holder.item_key.setText(info_string);
     }
 
     @Override
