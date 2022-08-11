@@ -10,10 +10,15 @@ public class TennisCourtModel {
 //    String phone;
 //    String lastUpdateTime;
 
+    public TennisCourtModel(int id, String name){
+        this.name=name;
+        this.id=id;
+    }
     public int getId() {
         return id;
     }
     public String getName() {
         return name;
     }
+
 }

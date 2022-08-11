@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mapFragment"
+    android:id="@+id/activity_tennis_court_details"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MapFragment">
@@ -19,7 +19,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="50"
-                    android:id="@+id/tennis_courts_recycler_view">
+                    android:id="@+id/photos_recyclerview">
 
                 </androidx.recyclerview.widget.RecyclerView>
 
@@ -27,7 +27,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="50"
-                    android:id="@+id/map_container">
+                    android:id="@+id/info_container">
 
                         <fragment xmlns:android="http://schemas.android.com/apk/res/android"
                             xmlns:tools="http://schemas.android.com/tools"

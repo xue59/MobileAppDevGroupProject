@@ -1,8 +1,6 @@
 package edu.neu.madscourse.tennismateandcourt;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -13,15 +11,12 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import androidx.lifecycle.ViewModelProvider;
-
-import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,17 +40,23 @@ public class MapFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_map, container, false);
-        recyclerView = rootView.findViewById(R.id.tennis_courts_recycler_view);
-        TennisCourtModel court1= new TennisCourtModel();
-        court1.id = 1;
-        court1.name = "First Tennis Court";
-        TennisCourtModel court2= new TennisCourtModel();
-        court2.id = 2;
-        court2.name = "Second Tennis Court";
+        recyclerView = rootView.findViewById(R.id.photos_recyclerview);
+        TennisCourtModel court1= new TennisCourtModel(1,"NEU Boston Tennis Court");
+        TennisCourtModel court2= new TennisCourtModel(2,"Second Tennis Court");
+        TennisCourtModel court3= new TennisCourtModel(3,"333 Tennis Court");
+        TennisCourtModel court4= new TennisCourtModel(4,"444 Tennis Court");
+        TennisCourtModel court5= new TennisCourtModel(5,"555 Tennis Court");
+        TennisCourtModel court6= new TennisCourtModel(6,"666 Tennis Court");
         listTennisCourts.add(court1);
         listTennisCourts.add(court2);
+        listTennisCourts.add(court3);
+        listTennisCourts.add(court4);
+        listTennisCourts.add(court5);
+        listTennisCourts.add(court6);
         adapter = new TennisCourtAdapter(this.getContext(), listTennisCourts);
+        Log.d("Check court list: ", "test111" + listTennisCourts.get(0).getName());
         recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
 
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);

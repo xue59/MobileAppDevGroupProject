@@ -7,7 +7,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="64dp"
         android:layout_margin="5dp"
         app:cardCornerRadius="5dp"
         app:cardElevation="5dp">
@@ -21,10 +21,10 @@
 
             <TextView
                 android:id="@+id/tennis_court_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="248dp"
+                android:layout_height="29dp"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -32,6 +32,18 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0"
                 tools:text="tennis court 1" />
+
+            <Button
+                android:id="@+id/btnDetails"
+                android:layout_width="85dp"
+                android:layout_height="40dp"
+                android:text="Details"
+                android:textAllCaps="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.452"
+                app:layout_constraintStart_toEndOf="@+id/tennis_court_name"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

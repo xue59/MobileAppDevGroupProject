@@ -10,7 +10,7 @@
         android:icon="@drawable/ic_baseline_search_24"
         android:title="Search" />
     <item
-        android:id="@+id/mapFragment"
+        android:id="@+id/activity_tennis_court_details"
         android:icon="@drawable/ic_baseline_map_24"
         android:title="Map" />
     <item
