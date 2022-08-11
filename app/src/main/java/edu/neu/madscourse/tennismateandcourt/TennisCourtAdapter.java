@@ -3,6 +3,7 @@ package edu.neu.madscourse.tennismateandcourt;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,6 +56,7 @@ public class TennisCourtAdapter extends RecyclerView.Adapter<TennisCourtAdapter.
                 }
                 Log.e("btnDetails: ", userModel.getName()+" Clicked - Details!!!");
                 Intent intent = new Intent(context,TennisCourtDetails.class);
+                intent.putExtra("TennisCourtModel",  userModel);
                 context.startActivity(intent);
             }
         });

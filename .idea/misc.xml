@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/layout/a_court_photo_holder.xml" value="0.1" />
         <entry key="app/src/main/res/layout/a_court_view_holder.xml" value="0.4653579676674365" />
+        <entry key="app/src/main/res/layout/a_info_row_holder.xml" value="0.3773173014322917" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22565002441406246" />
         <entry key="app/src/main/res/layout/activity_tennis_court_details.xml" value="0.263214111328125" />
         <entry key="app/src/main/res/layout/fragment_map.xml" value="0.1" />

@@ -41,18 +41,18 @@ public class MapFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_map, container, false);
         recyclerView = rootView.findViewById(R.id.photos_recyclerview);
-        TennisCourtModel court1= new TennisCourtModel(1,"NEU Boston Tennis Court");
-        TennisCourtModel court2= new TennisCourtModel(2,"Second Tennis Court");
-        TennisCourtModel court3= new TennisCourtModel(3,"333 Tennis Court");
-        TennisCourtModel court4= new TennisCourtModel(4,"444 Tennis Court");
-        TennisCourtModel court5= new TennisCourtModel(5,"555 Tennis Court");
-        TennisCourtModel court6= new TennisCourtModel(6,"666 Tennis Court");
+
+        // hardcode some test data
+        TennisCourtModel court1= new TennisCourtModel("1","NEU Boston Tennis Court","4.5","addres1111", "10AM-9PM","www.tennisss.com","762-301-231","2021-01-30");
+        TennisCourtModel court2= new TennisCourtModel("2","Second Tennis Court","4.5","addres1111", "10AM-9PM","www.tennisss.com","762-301-231","2021-01-30");
+        TennisCourtModel court3= new TennisCourtModel("3","333 Tennis Court","4.5","addres1111", "10AM-9PM","www.tennisss.com","762-301-231","2021-01-30");
+        TennisCourtModel court4= new TennisCourtModel("4","444 Tennis Court","4.5","addres1111", "10AM-9PM","www.tennisss.com","762-301-231","2021-01-30");
+        TennisCourtModel court5= new TennisCourtModel("5","555 Tennis Court","4.5","addres1111", "10AM-9PM","www.tennisss.com","762-301-231","2021-01-30");
         listTennisCourts.add(court1);
         listTennisCourts.add(court2);
         listTennisCourts.add(court3);
         listTennisCourts.add(court4);
         listTennisCourts.add(court5);
-        listTennisCourts.add(court6);
         adapter = new TennisCourtAdapter(this.getContext(), listTennisCourts);
         Log.d("Check court list: ", "test111" + listTennisCourts.get(0).getName());
         recyclerView.setAdapter(adapter);
