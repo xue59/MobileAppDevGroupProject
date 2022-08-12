@@ -106,11 +106,12 @@ public class MapFragment extends Fragment {
             @Override
             public void onMapReady(@NonNull GoogleMap googleMap) {
                 map = googleMap;
-                LatLng temp_court;
+                LatLng court_lat_lng;
                 for(int i =0; i <listTennisCourts.size();i++ ){
-                    temp_court = new LatLng(listTennisCourts.get(i).getLatitudes(), listTennisCourts.get(i).getLongitudes());
-                    map.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker(0)).position(temp_court).title(listTennisCourts.get(i).getName()));
-                    map.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker(120)).position(temp_court).title(listTennisCourts.get(i).getName()));
+                    TennisCourtModel a_court = listTennisCourts.get(i);
+                    court_lat_lng = new LatLng(listTennisCourts.get(i).getLatitudes(), listTennisCourts.get(i).getLongitudes());
+                    map.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker(0)).position(court_lat_lng).title(a_court.getName()).snippet(a_court.address));
+                    map.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker(120)).position(court_lat_lng).title(a_court.getName()));
                     moveMapToLocation(listTennisCourts.get(i));
                 }
 
