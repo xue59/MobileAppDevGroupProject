@@ -30,12 +30,14 @@ public class TennisCourtDetails extends AppCompatActivity {
 
         //code for display photo horizontal RV:
         photo_rv = findViewById(R.id.photos_recyclerview_horizontal);
+        // Hardcode 一些dummy photo in the list
         photoSource = new ArrayList<>();
         photoSource.add("1st");
         photoSource.add("2nd");
         photoSource.add("3nd");
         photoSource.add("4nd");
         photoSource.add("5nd");
+
         linearLayoutManager = new LinearLayoutManager(TennisCourtDetails.this,LinearLayoutManager.HORIZONTAL,false);
         photo_rv_adapter = new Photo_rv_adapter(TennisCourtDetails.this,photoSource);
         photo_rv.setLayoutManager(linearLayoutManager);

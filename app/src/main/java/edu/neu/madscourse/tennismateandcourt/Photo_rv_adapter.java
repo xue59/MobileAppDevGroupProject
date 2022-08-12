@@ -21,6 +21,7 @@ public class Photo_rv_adapter extends RecyclerView.Adapter<Photo_rv_adapter.hold
     @NonNull
     @Override
     public holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //临时先展示系统自带的 logo 图片作为球场照片
         View view = LayoutInflater.from(this.context).inflate(R.layout.a_court_photo_holder, parent,false);
         return new holder(view);
     }
