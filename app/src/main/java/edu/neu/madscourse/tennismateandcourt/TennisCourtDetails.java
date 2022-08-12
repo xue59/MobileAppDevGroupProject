@@ -62,7 +62,6 @@ public class TennisCourtDetails extends AppCompatActivity {
         info_rv.setAdapter(info_rv_adapter);
 
 
-
     }
 
 

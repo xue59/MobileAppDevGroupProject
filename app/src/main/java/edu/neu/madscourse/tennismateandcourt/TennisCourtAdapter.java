@@ -14,16 +14,29 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import java.util.List;
 
 public class TennisCourtAdapter extends RecyclerView.Adapter<TennisCourtAdapter.ViewHolder> {
     List<TennisCourtModel> tennisCourtModelList;
     Context context;
+    SupportMapFragment mapFragment;
+    GoogleMap map;
 
-    public TennisCourtAdapter(Context context, List<TennisCourtModel> tennisCourtModelList) {
+
+    public TennisCourtAdapter(Context context, List<TennisCourtModel> tennisCourtModelList, @NonNull SupportMapFragment mapFragment) {
         this.tennisCourtModelList = tennisCourtModelList;
         this.context=context;
-//        Log.e("public TennisCourtAdapter ", tennisCourtModelList.get(1).getName());
+        this.mapFragment = mapFragment;
+        Log.e("public TennisCourtAdapter ", tennisCourtModelList.get(1).getName());
+        Log.e("public TennisCourtAdapter Map", mapFragment.toString());
     }
 
 
@@ -36,28 +49,53 @@ public class TennisCourtAdapter extends RecyclerView.Adapter<TennisCourtAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull TennisCourtAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        TennisCourtModel userModel = tennisCourtModelList.get(position);
-        holder.tennis_court_name.setText(userModel.getName());
-//        Log.e("bind View: ", userModel.getName()+"");
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.e("bind View: ", userModel.getName()+" Clicked");
-                if (onItemClickListener!=null){
-                    onItemClickListener.onItemClick(position);
-                }
-            }
-        });
+        TennisCourtModel a_tennis_court = tennisCourtModelList.get(position);
+        holder.tennis_court_name.setText(a_tennis_court.getName());
+//        Log.e("bind View: ", a_tennis_court.getName()+"");
         holder.btnDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (onItemClickListener!=null){
                     onItemClickListener.onItemClick(position);
                 }
-                Log.e("btnDetails: ", userModel.getName()+" Clicked - Details!!!");
+                Log.e("btnDetails: ", a_tennis_court.getName()+" Clicked - Details!!!");
                 Intent intent = new Intent(context,TennisCourtDetails.class);
-                intent.putExtra("TennisCourtModel",  userModel);
+                intent.putExtra("TennisCourtModel",  a_tennis_court);
                 context.startActivity(intent);
+            }
+        });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (onItemClickListener!=null){
+                    onItemClickListener.onItemClick(position);
+                }
+                Log.e("bind View: ", a_tennis_court.getName()+" Clicked");
+                moveToTennisCourtWithMapFragment(mapFragment, a_tennis_court);
+
+            }
+        });
+
+    }
+
+    //following code input with mapFragment & a_tennis_court to move map to the location
+    public void moveToTennisCourtWithMapFragment (SupportMapFragment mapFragment, TennisCourtModel a_tennis_court){
+        mapFragment.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(@NonNull GoogleMap googleMap) {
+                map = googleMap;
+                moveMapToLocation(a_tennis_court);
+            }
+            private void moveMapToLocation(TennisCourtModel a_tennis_court)
+            {
+                LatLng court_lat_lng;
+                court_lat_lng = new LatLng(a_tennis_court.getLatitudes(), a_tennis_court.getLongitudes());
+                map.moveCamera(CameraUpdateFactory.newLatLngZoom(court_lat_lng,15));
+                // Zoom in, animating the camera.
+                map.animateCamera(CameraUpdateFactory.zoomIn());
+                // Zoom out to zoom level 10, animating with a duration of 2 seconds.
+                map.animateCamera(CameraUpdateFactory.zoomTo(11), 3000, null);
             }
         });
     }

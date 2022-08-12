@@ -7,16 +7,20 @@ public class TennisCourtModel implements Parcelable{
     int id;
     String name;
     Double rating;
+    Double latitudes;
+    Double longitudes;
     String address;
     String hoursOfOperations;
     String website;
     String phone;
     String lastUpdateTime;
 
-    public TennisCourtModel(int id, String name, Double rating, String address, String hoursOfOperations, String website, String phone, String lastUpdateTime){
+    public TennisCourtModel(int id, String name, Double rating,Double latitudes,Double longitudes, String address, String hoursOfOperations, String website, String phone, String lastUpdateTime){
         this.id=id;
         this.name=name;
         this.rating = rating;
+        this.latitudes = latitudes;
+        this.longitudes = longitudes;
         this.address = address;
         this.hoursOfOperations = hoursOfOperations;
         this.website = website;
@@ -49,6 +53,12 @@ public class TennisCourtModel implements Parcelable{
     public String getLastUpdateTime() {
         return lastUpdateTime;
     }
+    public Double getLatitudes() {
+        return latitudes;
+    }
+    public Double getLongitudes() {
+        return longitudes;
+    }
 
     // Parcelling part 打包传输model; 用于 activity 到activity间传输object
     protected TennisCourtModel(Parcel in){
@@ -56,6 +66,8 @@ public class TennisCourtModel implements Parcelable{
         this.id=in.readInt();
         this.name=in.readString();
         this.rating = in.readDouble();
+        this.latitudes = in.readDouble();;
+        this.longitudes = in.readDouble();;
         this.address = in.readString();
         this.hoursOfOperations = in.readString();
         this.website = in.readString();
@@ -75,6 +87,8 @@ public class TennisCourtModel implements Parcelable{
         dest.writeInt(this.id);
         dest.writeString(this.name);
         dest.writeDouble(this.rating);
+        dest.writeDouble(this.latitudes);
+        dest.writeDouble(this.longitudes);
         dest.writeString(this.address);
         dest.writeString(this.hoursOfOperations);
         dest.writeString(this.website);
