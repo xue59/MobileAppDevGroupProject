@@ -75,7 +75,6 @@ public class MapFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 listTennisCourts.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//                    TennisCourtModel a_court = snapshot.getValue(TennisCourtModel.);
                     int    id =  Integer.parseInt(snapshot.child("id").getValue().toString());
                     String name = snapshot.child("name").getValue().toString();
                     Double rating = Double.parseDouble(snapshot.child("rating").getValue().toString());
