@@ -10,12 +10,13 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Shake your phone to determine who to serve the ball!"
-        android:gravity="center"/>
+        android:fontFamily="@font/baloo_bhaijaan"
+        android:gravity="center"
+        android:text="ShakeShake to determine who serves the ball!" />
 
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/shakephone" />
+        android:layout_height="686dp"
+        android:src="@drawable/shake" />
 </FrameLayout>

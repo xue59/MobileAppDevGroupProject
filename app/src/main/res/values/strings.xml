@@ -2,4 +2,8 @@
     <string name="app_name">TennisMateAndCourt</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="turn">
+        <item>Your turn to serve the ball</item>
+        <item>Your partner to serve the ball</item>
+    </string-array>
 </resources>

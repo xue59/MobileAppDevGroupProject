@@ -1,5 +1,15 @@
 package edu.neu.madscourse.tennismateandcourt;
 
+
+
+
+
+import static android.content.Context.SENSOR_SERVICE;
+import static android.content.Context.VIBRATOR_SERVICE;
+
+
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -8,10 +18,16 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
+import android.os.Message;
+import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
+import android.widget.Toast;
+import android.content.res.Resources;
+
 
 ///**
 // * A simple {@link Fragment} subclass.
@@ -19,20 +35,12 @@ import android.widget.TextView;
 // * create an instance of this fragment.
 // */
 public class ShakeFindFragment extends Fragment {
-    private SensorManager sensorManager;
-    private TextView textView;
+    private SensorManager sensorManager = null;
+    private Vibrator vibrator = null;
+    private static final String TAG = "MainActivity";
+    private static final int SENSOR_SHAKE = 10;
 
-    private SensorEventListener sensorEventListener = new SensorEventListener() {
-        @Override
-        public void onSensorChanged(SensorEvent event) {
 
-        }
-
-        @Override
-        public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
-        }
-    };
 
 
 
@@ -67,19 +75,91 @@ public class ShakeFindFragment extends Fragment {
 //        return fragment;
 //    }
 //
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
-//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_shake_find, container, false);
+        View view = inflater.inflate(R.layout.fragment_shake_find,container,false);
+        return view;
     }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+//        setContentView(R.layout.activity_main);
+        sensorManager = (SensorManager) getActivity().getSystemService(SENSOR_SERVICE);
+        vibrator = (Vibrator) getActivity().getSystemService(VIBRATOR_SERVICE);
+//        Resources res = getResources();
+//        String []turn = res.getStringArray(R.array.turn);
+//        if (getArguments() != null) {
+//            mParam1 = getArguments().getString(ARG_PARAM1);
+//            mParam2 = getArguments().getString(ARG_PARAM2);
+//        }
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (sensorManager != null) {
+            sensorManager.registerListener(sensorEventListener, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
+        }
+    }
+
+    @Override
+    public void onStop() {
+
+        super.onStop();
+        if(sensorManager != null) {
+            sensorManager.unregisterListener(sensorEventListener);
+        }
+    }
+
+    private final SensorEventListener sensorEventListener = new SensorEventListener() {
+
+        @Override
+        public void onSensorChanged(SensorEvent event) {
+
+            float[] values = event.values;
+            float x = values[0];
+            float y = values[1];
+            float z = values[2];
+
+            int value = 40;
+            if (Math.abs(x) > value || Math.abs(y) > value || Math.abs(z) > value) {
+                vibrator.vibrate(300);
+                Message msg = new Message();
+                msg.what = SENSOR_SHAKE;
+                handler.sendMessage(msg);
+            }
+        }
+
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+        }
+    };
+
+    @SuppressLint("HandlerLeak")
+    Handler handler = new Handler() {
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            Resources res = getResources();
+            String []turn = res.getStringArray(R.array.turn);
+            if (msg.what == SENSOR_SHAKE) {
+                Toast.makeText(getActivity(), turn[(int)(Math.random()*2)], Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
+
+
+
+
+
+
+
 }
