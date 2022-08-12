@@ -4,16 +4,16 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class TennisCourtModel implements Parcelable{
-    String id;
+    int id;
     String name;
-    String rating;
+    Double rating;
     String address;
     String hoursOfOperations;
     String website;
     String phone;
     String lastUpdateTime;
 
-    public TennisCourtModel(String id, String name, String rating, String address, String hoursOfOperations, String website, String phone, String lastUpdateTime){
+    public TennisCourtModel(int id, String name, Double rating, String address, String hoursOfOperations, String website, String phone, String lastUpdateTime){
         this.id=id;
         this.name=name;
         this.rating = rating;
@@ -25,13 +25,13 @@ public class TennisCourtModel implements Parcelable{
 
 
     }
-    public String getId() {
+    public int getId() {
         return id;
     }
     public String getName() {
         return name;
     }
-    public String getRating() {
+    public double getRating() {
         return rating;
     }
     public String getAddress() {
@@ -51,19 +51,18 @@ public class TennisCourtModel implements Parcelable{
     }
 
     // Parcelling part 打包传输model; 用于 activity 到activity间传输object
-    public TennisCourtModel(Parcel in){
-        String[] data = new String[8];
-
-        in.readStringArray(data);
+    protected TennisCourtModel(Parcel in){
         // the order needs to be the same as in writeToParcel() method
-        this.id=data[0];
-        this.name=data[1];
-        this.rating = data[2];
-        this.address = data[3];
-        this.hoursOfOperations = data[4];
-        this.website = data[5];
-        this.phone = data[6];
-        this.lastUpdateTime = data[7];
+        this.id=in.readInt();
+        this.name=in.readString();
+        this.rating = in.readDouble();
+        this.address = in.readString();
+        this.hoursOfOperations = in.readString();
+        this.website = in.readString();
+        this.phone = in.readString();
+        this.lastUpdateTime = in.readString();
+
+
     }
 
     @Override
@@ -73,16 +72,14 @@ public class TennisCourtModel implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeStringArray(new String[] {
-                this.id,
-                this.name,
-                this.rating,
-                this.address,
-                this.hoursOfOperations,
-                this.website,
-                this.phone,
-                this.lastUpdateTime
-        });
+        dest.writeInt(this.id);
+        dest.writeString(this.name);
+        dest.writeDouble(this.rating);
+        dest.writeString(this.address);
+        dest.writeString(this.hoursOfOperations);
+        dest.writeString(this.website);
+        dest.writeString(this.phone);
+        dest.writeString(this.lastUpdateTime);
     }
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
         public TennisCourtModel createFromParcel(Parcel in) {

@@ -48,9 +48,9 @@ public class TennisCourtDetails extends AppCompatActivity {
         Log.d("Test display court model transit: ", tennisCourtModel.getName());
         info_rv = findViewById(R.id.info_recyclerview);
         info_list = new ArrayList<>();
-        info_list.add(tennisCourtModel.getId());
+        info_list.add(tennisCourtModel.getId()+"");
         info_list.add(tennisCourtModel.getName());
-        info_list.add(tennisCourtModel.getRating());
+        info_list.add(tennisCourtModel.getRating()+"");
         info_list.add(tennisCourtModel.getAddress());
         info_list.add(tennisCourtModel.getHoursOfOperations());
         info_list.add(tennisCourtModel.getWebsite());

@@ -43,11 +43,11 @@ public class MapFragment extends Fragment {
         recyclerView = rootView.findViewById(R.id.photos_recyclerview);
 
         // hardcode some test data
-        TennisCourtModel court1= new TennisCourtModel("1","NEU Boston Tennis Court","4.5","addres1111", "10AM-9PM","www.tennisss.com","762-301-231","2021-01-30");
-        TennisCourtModel court2= new TennisCourtModel("2","Second Tennis Court","4.5","addres1111", "10AM-9PM","www.tennisss.com","762-301-231","2021-01-30");
-        TennisCourtModel court3= new TennisCourtModel("3","333 Tennis Court","4.5","addres1111", "10AM-9PM","www.tennisss.com","762-301-231","2021-01-30");
-        TennisCourtModel court4= new TennisCourtModel("4","444 Tennis Court","4.5","addres1111", "10AM-9PM","www.tennisss.com","762-301-231","2021-01-30");
-        TennisCourtModel court5= new TennisCourtModel("5","555 Tennis Court","4.5","addres1111", "10AM-9PM","www.tennisss.com","762-301-231","2021-01-30");
+        TennisCourtModel court1= new TennisCourtModel(1,"NEU Boston Tennis Court",4.5,"addres1111", "10AM-9PM","www.tennisss.com","762-301-231","2021-01-30");
+        TennisCourtModel court2= new TennisCourtModel(2,"Second Tennis Court",4.5,"addres1111", "10AM-9PM","www.tennisss.com","762-301-231","2021-01-30");
+        TennisCourtModel court3= new TennisCourtModel(3,"333 Tennis Court",4.5,"addres1111", "10AM-9PM","www.tennisss.com","762-301-231","2021-01-30");
+        TennisCourtModel court4= new TennisCourtModel(4,"444 Tennis Court",4.5,"addres1111", "10AM-9PM","www.tennisss.com","762-301-231","2021-01-30");
+        TennisCourtModel court5= new TennisCourtModel(5,"555 Tennis Court",4.5,"addres1111", "10AM-9PM","www.tennisss.com","762-301-231","2021-01-30");
         listTennisCourts.add(court1);
         listTennisCourts.add(court2);
         listTennisCourts.add(court3);
