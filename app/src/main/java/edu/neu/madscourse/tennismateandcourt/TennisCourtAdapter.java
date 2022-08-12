@@ -35,8 +35,8 @@ public class TennisCourtAdapter extends RecyclerView.Adapter<TennisCourtAdapter.
         this.tennisCourtModelList = tennisCourtModelList;
         this.context=context;
         this.mapFragment = mapFragment;
-        Log.e("public TennisCourtAdapter ", tennisCourtModelList.get(1).getName());
-        Log.e("public TennisCourtAdapter Map", mapFragment.toString());
+//        Log.e("public TennisCourtAdapter ", tennisCourtModelList.get(1).getName());
+//        Log.e("public TennisCourtAdapter Map", mapFragment.toString());
     }
 
 

@@ -11,6 +11,11 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,10 +33,11 @@ import java.util.List;
 public class MapFragment extends Fragment {
     private MapViewModel mViewModel;
     GoogleMap map;
-
     private RecyclerView recyclerView;
     private TennisCourtAdapter adapter;
     private List<TennisCourtModel> listTennisCourts = new ArrayList();
+
+    public DatabaseReference dataRef;
 
     public static MapFragment newInstance() {
         return new MapFragment();
@@ -41,8 +47,61 @@ public class MapFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_map, container, false);
-        // display map view first:
+        // display map fragment first & set location:
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+        setMapFragement(mapFragment);
+
+
+        // Display recycelr tennis court list view & hardcode some test data
+        recyclerView = rootView.findViewById(R.id.photos_recyclerview);
+        getData(dataRef, mapFragment);
+
+        adapter = new TennisCourtAdapter(this.getContext(), listTennisCourts, mapFragment);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        return rootView;
+    }
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mViewModel = new ViewModelProvider(this).get(MapViewModel.class);
+        // TODO: Use the ViewModel
+    }
+
+    private void getData(DatabaseReference dataRef, SupportMapFragment mapFragment) {
+        dataRef = FirebaseDatabase.getInstance().getReference("Courts");
+        dataRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                listTennisCourts.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                    TennisCourtModel a_court = snapshot.getValue(TennisCourtModel.);
+                    int    id =  Integer.parseInt(snapshot.child("id").getValue().toString());
+                    String name = snapshot.child("name").getValue().toString();
+                    Double rating = Double.parseDouble(snapshot.child("rating").getValue().toString());
+                    Double latitudes = Double.parseDouble(snapshot.child("latitudes").getValue().toString());
+                    Double longitudes = Double.parseDouble(snapshot.child("longitudes").getValue().toString());
+                    String address = snapshot.child("address").getValue().toString();
+                    String hoursOfOperations = snapshot.child("hoursOfOperations").getValue().toString();
+                    String website = snapshot.child("website").getValue().toString();
+                    String phone = snapshot.child("phone").getValue().toString();
+                    String lastUpdateTime = snapshot.child("lastUpdateTime").getValue().toString();
+                    TennisCourtModel a_court = new TennisCourtModel(id, name, rating, latitudes,longitudes,address,hoursOfOperations,website,phone, lastUpdateTime);
+                    listTennisCourts.add(a_court);
+                    Log.e("test snapshot get database: ",  a_court.getName());
+                }
+                adapter.notifyDataSetChanged();
+                setMapFragement(mapFragment);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
+    //如下代码用于 setup 下半部分的Map fragment & auto zoom map的功能
+    public void setMapFragement(SupportMapFragment mapFragment){
         mapFragment.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(@NonNull GoogleMap googleMap) {
@@ -64,55 +123,9 @@ public class MapFragment extends Fragment {
                 map.moveCamera(CameraUpdateFactory.newLatLngZoom(court_lat_lng,15));
                 // Zoom in, animating the camera.
                 map.animateCamera(CameraUpdateFactory.zoomIn());
-                // Zoom out to zoom level 10, animating with a duration of 2 seconds.
-                map.animateCamera(CameraUpdateFactory.zoomTo(11), 3000, null);
+                // Zoom out to zoom level 10, animating with a duration of 2.2 seconds.
+                map.animateCamera(CameraUpdateFactory.zoomTo(11), 2200, null);
             }
         });
-
-
-        // Display recycelr tennis court list view & hardcode some test data
-        recyclerView = rootView.findViewById(R.id.photos_recyclerview);
-        TennisCourtModel court1= new TennisCourtModel(1,"NEU Boston Tennis Court",4.5,42.33962289703249,-71.08975307364507,"addres1111", "10AM-9PM","www.tennisss.com","762-301-231","2021-01-30");
-        TennisCourtModel court2= new TennisCourtModel(2,"Second Tennis Court",4.5,42.34962289704246,-71.07975307364508,"addres1111", "10AM-9PM","www.tennisss.com","762-301-231","2021-01-30");
-        TennisCourtModel court3= new TennisCourtModel(3,"333 Tennis Court",4.5,42.33942289703345,-71.06975307362505,"addres1111", "10AM-9PM","www.tennisss.com","762-301-231","2021-01-30");
-        TennisCourtModel court4= new TennisCourtModel(4,"444 Tennis Court",4.5,42.32962289703444,-71.05975307363503,"addres1111", "10AM-9PM","www.tennisss.com","762-301-231","2021-01-30");
-        TennisCourtModel court5= new TennisCourtModel(5,"555 Tennis Court",4.5,42.31962289703143,-71.04975307363502,"addres1111", "10AM-9PM","www.tennisss.com","762-301-231","2021-01-30");
-        listTennisCourts.add(court1);
-        listTennisCourts.add(court2);
-        listTennisCourts.add(court3);
-        listTennisCourts.add(court4);
-        listTennisCourts.add(court5);
-        adapter = new TennisCourtAdapter(this.getContext(), listTennisCourts, mapFragment);
-        Log.d("Check court list: ", "test111" + listTennisCourts.get(0).getName());
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-
-        return rootView;
     }
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(MapViewModel.class);
-        // TODO: Use the ViewModel
-    }
-
-//    GoogleMap map;
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState){
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.fragment_map);
-//
-//        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-//                .findFragmentById(R.id.map);
-//        mapFragment.getMapAsync(this);
-//    }
-//
-//    @Override
-//    public void onMapReady(GoogleMap googleMap){
-//        map = googleMap;
-//        LatLng NEUBoston = new LatLng(42.33962289703249, -71.08975307364507);
-//        map.addMarker(new MarkerOptions().position(NEUBoston).title("NEU Boston"));
-//        map.moveCamera(CameraUpdateFactory.newLatLng(NEUBoston));
-//    }
 }
