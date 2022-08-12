@@ -73,7 +73,6 @@ public class TennisCourtAdapter extends RecyclerView.Adapter<TennisCourtAdapter.
                 }
                 Log.e("bind View: ", a_tennis_court.getName()+" Clicked");
                 moveToTennisCourtWithMapFragment(mapFragment, a_tennis_court);
-
             }
         });
 
@@ -91,11 +90,11 @@ public class TennisCourtAdapter extends RecyclerView.Adapter<TennisCourtAdapter.
             {
                 LatLng court_lat_lng;
                 court_lat_lng = new LatLng(a_tennis_court.getLatitudes(), a_tennis_court.getLongitudes());
-                map.moveCamera(CameraUpdateFactory.newLatLngZoom(court_lat_lng,15));
+                map.moveCamera(CameraUpdateFactory.newLatLngZoom(court_lat_lng,11));
                 // Zoom in, animating the camera.
                 map.animateCamera(CameraUpdateFactory.zoomIn());
                 // Zoom out to zoom level 10, animating with a duration of 2 seconds.
-                map.animateCamera(CameraUpdateFactory.zoomTo(11), 3000, null);
+                map.animateCamera(CameraUpdateFactory.zoomTo(13), 1000, null);
             }
         });
     }

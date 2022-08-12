@@ -51,6 +51,7 @@ public class MapFragment extends Fragment {
                 for(int i =0; i <listTennisCourts.size();i++ ){
                     temp_court = new LatLng(listTennisCourts.get(i).getLatitudes(), listTennisCourts.get(i).getLongitudes());
                     map.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker(0)).position(temp_court).title(listTennisCourts.get(i).getName()));
+                    map.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker(120)).position(temp_court).title(listTennisCourts.get(i).getName()));
                     moveMapToLocation(listTennisCourts.get(i));
                 }
 
