@@ -85,7 +85,10 @@ public class MapFragment extends Fragment {
                     String website = snapshot.child("website").getValue().toString();
                     String phone = snapshot.child("phone").getValue().toString();
                     String lastUpdateTime = snapshot.child("lastUpdateTime").getValue().toString();
+                    List<String> imgs = (List<String>) snapshot.child("photos").getValue();
                     TennisCourtModel a_court = new TennisCourtModel(id, name, rating, latitudes,longitudes,address,hoursOfOperations,website,phone, lastUpdateTime);
+                    a_court.setPhotos(imgs);
+                    a_court.setKey(snapshot.getKey());
                     listTennisCourts.add(a_court);
                     Log.e("test snapshot get database: ",  a_court.getName());
                 }

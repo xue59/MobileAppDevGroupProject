@@ -3,6 +3,8 @@ package edu.neu.madscourse.tennismateandcourt;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.List;
+
 public class TennisCourtModel implements Parcelable{
     int id;
     String name;
@@ -14,6 +16,8 @@ public class TennisCourtModel implements Parcelable{
     String website;
     String phone;
     String lastUpdateTime;
+    List<String> photos;
+    String key;
 
     public TennisCourtModel(int id, String name, Double rating,Double latitudes,Double longitudes, String address, String hoursOfOperations, String website, String phone, String lastUpdateTime){
         this.id=id;
@@ -29,77 +33,173 @@ public class TennisCourtModel implements Parcelable{
 
 
     }
+
     public int getId() {
         return id;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
-    public double getRating() {
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Double getRating() {
         return rating;
     }
-    public String getAddress() {
-        return address;
+
+    public void setRating(Double rating) {
+        this.rating = rating;
     }
-    public String getHoursOfOperations() {
-        return hoursOfOperations;
-    }
-    public String getWebsite() {
-        return website;
-    }
-    public String getPhone() {
-        return phone;
-    }
-    public String getLastUpdateTime() {
-        return lastUpdateTime;
-    }
+
     public Double getLatitudes() {
         return latitudes;
     }
+
+    public void setLatitudes(Double latitudes) {
+        this.latitudes = latitudes;
+    }
+
     public Double getLongitudes() {
         return longitudes;
     }
 
-    // Parcelling part 打包传输model; 用于 activity 到activity间传输object
-    protected TennisCourtModel(Parcel in){
-        // the order needs to be the same as in writeToParcel() method
-        this.id=in.readInt();
-        this.name=in.readString();
-        this.rating = in.readDouble();
-        this.latitudes = in.readDouble();;
-        this.longitudes = in.readDouble();;
-        this.address = in.readString();
-        this.hoursOfOperations = in.readString();
-        this.website = in.readString();
-        this.phone = in.readString();
-        this.lastUpdateTime = in.readString();
-
-
+    public void setLongitudes(Double longitudes) {
+        this.longitudes = longitudes;
     }
 
-    @Override
-    public int describeContents(){
-        return 0;
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getHoursOfOperations() {
+        return hoursOfOperations;
+    }
+
+    public void setHoursOfOperations(String hoursOfOperations) {
+        this.hoursOfOperations = hoursOfOperations;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getLastUpdateTime() {
+        return lastUpdateTime;
+    }
+
+    public void setLastUpdateTime(String lastUpdateTime) {
+        this.lastUpdateTime = lastUpdateTime;
+    }
+
+    public List<String> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List<String> photos) {
+        this.photos = photos;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    protected TennisCourtModel(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        if (in.readByte() == 0) {
+            rating = null;
+        } else {
+            rating = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            latitudes = null;
+        } else {
+            latitudes = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            longitudes = null;
+        } else {
+            longitudes = in.readDouble();
+        }
+        address = in.readString();
+        hoursOfOperations = in.readString();
+        website = in.readString();
+        phone = in.readString();
+        lastUpdateTime = in.readString();
+        photos = in.createStringArrayList();
+        key = in.readString();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(this.id);
-        dest.writeString(this.name);
-        dest.writeDouble(this.rating);
-        dest.writeDouble(this.latitudes);
-        dest.writeDouble(this.longitudes);
-        dest.writeString(this.address);
-        dest.writeString(this.hoursOfOperations);
-        dest.writeString(this.website);
-        dest.writeString(this.phone);
-        dest.writeString(this.lastUpdateTime);
+        dest.writeInt(id);
+        dest.writeString(name);
+        if (rating == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeDouble(rating);
+        }
+        if (latitudes == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeDouble(latitudes);
+        }
+        if (longitudes == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeDouble(longitudes);
+        }
+        dest.writeString(address);
+        dest.writeString(hoursOfOperations);
+        dest.writeString(website);
+        dest.writeString(phone);
+        dest.writeString(lastUpdateTime);
+        dest.writeStringList(photos);
+        dest.writeString(key);
     }
-    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<TennisCourtModel> CREATOR = new Creator<TennisCourtModel>() {
+        @Override
         public TennisCourtModel createFromParcel(Parcel in) {
             return new TennisCourtModel(in);
         }
 
+        @Override
         public TennisCourtModel[] newArray(int size) {
             return new TennisCourtModel[size];
         }
