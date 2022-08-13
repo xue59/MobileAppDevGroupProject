@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
 */
 
     private void onUserSignedIn() {
+        user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 if (snapshot.hasChild(uid)) {
                     Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                     startActivity(intent);
-                // User hasn't completed the sign up process
+                    // User hasn't completed the sign up process
                 } else {
                     Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
                     startActivity(intent);
