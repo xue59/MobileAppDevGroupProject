@@ -8,7 +8,7 @@
 
 
     <fragment
-        android:id="@+id/activity_tennis_court_details"
+        android:id="@+id/mapFragment"
         android:name="edu.neu.madscourse.tennismateandcourt.MapFragment"
         android:label="Map"
         tools:layout="@layout/fragment_map" />
