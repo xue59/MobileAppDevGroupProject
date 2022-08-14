@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottomnavigation"
+    android:resizeableActivity="true"
     app:startDestination="@id/mapFragment">
+
 
     <fragment
         android:id="@+id/searchFragment"
