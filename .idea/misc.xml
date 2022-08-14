@@ -3,25 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/tonyh/AndroidStudioProjects/Tennis/MobileAppDevGroupProject/app/src/main/res/layout/activity_chat.xml" value="0.29322916666666665" />
-        <entry key="app/src/main/res/drawable-nodpi/_bg__starting_page_shape.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable-nodpi/line_1_ek1_shape.xml" value="0.1265" />
-        <entry key="app/src/main/res/drawable-nodpi/line_1_shape.xml" value="0.1195" />
-        <entry key="app/src/main/res/drawable-nodpi/rectangle_8_shape.xml" value="0.1265" />
         <entry key="app/src/main/res/drawable/ic__email_20.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_create_account.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.25677083333333334" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/activity_login2.xml" value="0.128125" />
-        <entry key="app/src/main/res/layout/activity_login_2.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22565002441406246" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.25677083333333334" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_signup_with_email.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_signup_with_phone.xml" value="0.1933876811594203" />
-        <entry key="app/src/main/res/layout/activity_test.xml" value="0.115625" />
         <entry key="app/src/main/res/layout/dropdown_item.xml" value="0.11811335711454618" />
-        <entry key="app/src/main/res/layout/starting_page.xml" value="0.30025634765625003" />
+        <entry key="app/src/main/res/layout/item_text_receive.xml" value="0.30344202898550726" />
+        <entry key="app/src/main/res/layout/item_users.xml" value="0.30344202898550726" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1265" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.309" />
       </map>
