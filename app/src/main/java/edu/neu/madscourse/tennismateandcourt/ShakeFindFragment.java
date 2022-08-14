@@ -127,7 +127,7 @@ public class ShakeFindFragment extends Fragment {
             float y = values[1];
             float z = values[2];
 
-            int value = 40;
+            int value = 15;
             if (Math.abs(x) > value || Math.abs(y) > value || Math.abs(z) > value) {
                 vibrator.vibrate(300);
                 Message msg = new Message();
