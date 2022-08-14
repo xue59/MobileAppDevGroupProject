@@ -31,6 +31,12 @@
         <entry key="app/src/main/res/menu/menu_main.xml" value="0.4230769230769231" />
         <entry key="app/src/main/res/menu/navigationmenu.xml" value="0.39739583333333334" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.4065" />
+        <entry key="app/src/main/res/layout/a_court_photo_holder.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/a_court_view_holder.xml" value="0.4653579676674365" />
+        <entry key="app/src/main/res/layout/a_info_row_holder.xml" value="0.3773173014322917" />
+        <entry key="app/src/main/res/layout/activity_tennis_court_details.xml" value="0.263214111328125" />
+        <entry key="app/src/main/res/layout/item_photos_recyclerview_horizontal.xml" value="0.24947916666666667" />
+        <entry key="app/src/main/res/menu/navigationmenu.xml" value="0.20677083333333332" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.309" />
       </map>
     </option>
