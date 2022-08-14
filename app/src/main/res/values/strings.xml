@@ -1,10 +1,5 @@
 <resources>
     <string name="app_name">TennisMateAndCourt</string>
-    <string name="agree_condition">By continuing I agree with the Privacy Policy, Terms &amp; Condition</string>
-    <string name="continue_with_google">Continue with Google</string>
-    <string name="continue_with_facebook">Continue with Facebook</string>
-    <string name="continue_with_email_or_phone">Continue with email or phone</string>
-    <string name="create_an_account_string">Create an Account</string>
     <string name="log_in_string">LOG IN</string>
     <string name="slogan">The best tennis social app to find tennis partners in your area!</string>
     <string-array name="gender">
@@ -24,5 +19,11 @@
         <item>5.0</item>
         <item>5.5</item>
         <item>6.0+</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="turn">
+        <item>Your turn to serve the ball</item>
+        <item>Your partner to serve the ball</item>
     </string-array>
 </resources>
