@@ -8,11 +8,6 @@
 
 
     <fragment
-        android:id="@+id/searchFragment"
-        android:name="edu.neu.madscourse.tennismateandcourt.SearchFragment"
-        android:label="Search"
-        tools:layout="@layout/fragment_search" />
-    <fragment
         android:id="@+id/mapFragment"
         android:name="edu.neu.madscourse.tennismateandcourt.MapFragment"
         android:label="Map"
