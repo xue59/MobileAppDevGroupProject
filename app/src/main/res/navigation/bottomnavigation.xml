@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottomnavigation"
-    app:startDestination="@id/shakeFindFragment">
+    app:startDestination="@id/mapFragment">
 
     <fragment
         android:id="@+id/searchFragment"
