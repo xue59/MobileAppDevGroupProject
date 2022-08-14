@@ -4,12 +4,14 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -27,7 +29,7 @@ import java.util.Comparator;
 import java.util.List;
 
 
-public class UserListActivity extends AppCompatActivity {
+public class UserListFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
     private SwipeRefreshLayout mSwRefresh;
@@ -40,21 +42,27 @@ public class UserListActivity extends AppCompatActivity {
     private EditText etName;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_users);
-        mProgressDialog =  new ProgressDialog(this);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_user_list, container, false);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mProgressDialog =  new ProgressDialog(getActivity());
         initView();
         init();
     }
+
 
     public List<String> getMyFriends() {
         return myInfo.getFriends();
     }
 
     private void initView() {
-        etName = findViewById(R.id.et_name);
-        findViewById(R.id.search).setOnClickListener(new View.OnClickListener() {
+        etName = getView().findViewById(R.id.et_name);
+        getView().findViewById(R.id.search).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String name = etName.getText().toString();
@@ -64,21 +72,21 @@ public class UserListActivity extends AppCompatActivity {
                 search(name);
             }
         });
-        mRecyclerView = findViewById(R.id.recyclerView);
-        mSwRefresh = findViewById(R.id.sw_refresh);
+        mRecyclerView = getView().findViewById(R.id.recyclerView);
+        mSwRefresh = getView().findViewById(R.id.sw_refresh);
         mSwRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 init();
             }
         });
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mAdapter = new UserAdapter( this, list);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setOnItemClickListener(new UserAdapter.OnItemClickListener() {
             @Override
             public void onItemChatClick(int position) {
-                Intent intent = new Intent(UserListActivity.this,ChatActivity.class);
+                Intent intent = new Intent(getActivity(),ChatActivity.class);
                 intent.putExtra("user",list.get(position));
                 startActivity(intent);
             }

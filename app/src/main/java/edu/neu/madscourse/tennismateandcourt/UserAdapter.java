@@ -14,8 +14,8 @@ import java.util.List;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     List<User> notices ;
-    UserListActivity context ;
-    public UserAdapter(UserListActivity context, List<User> notices){
+    UserListFragment context ;
+    public UserAdapter(UserListFragment context, List<User> notices){
         this.notices = notices;
         this.context = context;
     }
@@ -26,7 +26,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-       View view =  LayoutInflater.from(context).inflate(R.layout.item_users,parent,false);
+       View view =  LayoutInflater.from(context.getActivity()).inflate(R.layout.item_users,parent,false);
         return new ViewHolder(view);
     }
 

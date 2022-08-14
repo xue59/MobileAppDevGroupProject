@@ -28,10 +28,6 @@ import java.util.List;
 
 public class ChatActivity extends AppCompatActivity {
 
-
-
-
-
     private DatabaseReference databaseReference1;
     private List<Message> list = new ArrayList<>();
     private DatabaseReference databaseReference;
