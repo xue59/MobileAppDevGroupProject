@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -140,6 +141,7 @@ public class SettingFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 updateUserProfile();
+                Toast.makeText(getActivity(), "Changes saved!", Toast.LENGTH_SHORT).show();
             }
         });
 
