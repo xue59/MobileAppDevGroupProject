@@ -40,12 +40,13 @@ import java.util.List;
 
 public class TennisCourtDetails extends AppCompatActivity {
     RecyclerView photo_rv, info_rv;
-    ArrayList<String> photoSource, info_list;
+    ArrayList<String>  info_list;
     LinearLayoutManager linearLayoutManager;
     Photo_rv_adapter photo_rv_adapter;
     Info_rv_adapter info_rv_adapter;
     private Uri imageUri;
     private TennisCourtModel tennisCourtModel;
+    List<String> photoSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,15 +56,13 @@ public class TennisCourtDetails extends AppCompatActivity {
 //        actionBar.setDisplayHomeAsUpEnabled(true); // showing the go back bar暂时comment掉 action bar
         //starts coding here: ....
 
+        Bundle data = getIntent().getExtras();
+        tennisCourtModel = (TennisCourtModel) data.getParcelable("TennisCourtModel"); //get 传输过来的tennis court
         //code for display photo horizontal RV:
         photo_rv = findViewById(R.id.photos_recyclerview_horizontal);
         // Hardcode 一些dummy photo in the list
-        photoSource = new ArrayList<>();
-        photoSource.add("1st");
-        photoSource.add("2nd");
-        photoSource.add("3nd");
-        photoSource.add("4nd");
-        photoSource.add("5nd");
+//        photoSource = new ArrayList<>();
+        photoSource = tennisCourtModel.getPhotos();
 
         linearLayoutManager = new LinearLayoutManager(TennisCourtDetails.this,LinearLayoutManager.HORIZONTAL,false);
         photo_rv_adapter = new Photo_rv_adapter(TennisCourtDetails.this,photoSource);
@@ -72,8 +71,7 @@ public class TennisCourtDetails extends AppCompatActivity {
 
 
         // code for display court info details RV:
-        Bundle data = getIntent().getExtras();
-        tennisCourtModel = (TennisCourtModel) data.getParcelable("TennisCourtModel");
+
         Log.d("Test display court model transit: ", tennisCourtModel.getName());
         info_rv = findViewById(R.id.info_recyclerview);
         info_list = new ArrayList<>();
