@@ -14,8 +14,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@id/name_til"
-            android:layout_marginTop="50dp"
-            android:text="Settings"
+            android:layout_marginTop="30dp"
+            android:text="Your Profile"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -25,7 +25,7 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/signup_tv"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="16dp"
             android:hint="First &amp; last name">
@@ -131,14 +131,25 @@
 
 
         <Button
-            android:id="@+id/continue_btn"
+            android:id="@+id/save_btn"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/NTRPRating_til"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:padding="10dp"
-            android:text="Next"
+            android:text="Save changes"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/logout_btn"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/save_btn"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text="Log out"
             android:textColor="@color/white" />
     </RelativeLayout>
 

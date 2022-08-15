@@ -2,9 +2,7 @@ package edu.neu.madscourse.tennismateandcourt;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class User implements Serializable {
 
@@ -12,7 +10,7 @@ public class User implements Serializable {
     private String email;
     private String dateOfBirth;
     private String gender;
-    private String NTRPRating;
+    private String ntrprating;
     private Double lat;
     private Double lon;
     private String uid;
@@ -20,14 +18,19 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String name, String email, String dateOfBirth, String gender, String NTRPRating, Double lat, Double lon) {
+    public User(String name, String email, String dateOfBirth, String gender, String ntrprating, Double lat, Double lon) {
         this.name = name;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
-        this.NTRPRating = NTRPRating;
+        this.ntrprating = ntrprating;
         this.lat = lat;
         this.lon = lon;
+    }
+
+    public boolean isComplete() {
+        return name != null && email != null && dateOfBirth != null && gender != null
+                && ntrprating != null && lat != null && lon != null;
     }
 
     public String getUid() {
@@ -81,8 +84,8 @@ public class User implements Serializable {
         return gender;
     }
 
-    public String getNTRPRating() {
-        return NTRPRating;
+    public String getNtrprating() {
+        return ntrprating;
     }
 
     public Double getLat() {

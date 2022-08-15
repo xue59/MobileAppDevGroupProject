@@ -76,19 +76,24 @@ public class SignUpActivity extends AppCompatActivity {
             nameInput.setText(user.getDisplayName());
         }
 
+        getCurrentLocation();
+
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String uid = user.getUid();
                 User user = new User(nameInput.getText().toString(), emailInput.getText().toString(), dateOfBirth, gender, NTRPRating, lat, lon);
-                userRef.child(uid).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
-                        startActivity(intent);
-                    }
-                });
-            }
+                if (!user.isComplete()) {
+                    Toast.makeText(SignUpActivity.this, "Please complete all entries before proceeding", Toast.LENGTH_SHORT).show();
+                } else {
+                    userRef.child(uid).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+                }}
         });
 
         ArrayAdapter<CharSequence> genderItemAdapter = ArrayAdapter.createFromResource(this, R.array.gender, R.layout.dropdown_item);
@@ -114,7 +119,6 @@ public class SignUpActivity extends AppCompatActivity {
                 openDatePicker();
             }
         });
-        getCurrentLocation();
 
     }
 

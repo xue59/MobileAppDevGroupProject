@@ -42,7 +42,7 @@ import java.util.concurrent.CountedCompleter;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
-    private FirebaseUser user;
+    private FirebaseAuth mAuth;
     private DatabaseReference userRef;
     private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(
             new FirebaseAuthUIActivityResultContract(),
@@ -59,13 +59,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        user = FirebaseAuth.getInstance().getCurrentUser();
+        mAuth = FirebaseAuth.getInstance();
         userRef = FirebaseDatabase.getInstance().getReference("Users");
+        mAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if (firebaseAuth.getCurrentUser() != null) {
+                    // User is signed in
+                    onUserSignedIn();
+                } else {
+                    // No user is signed in
+                    signIn();
+                }
+            }
+        });
 
-        signIn();
     }
 
- /*       if (user != null) {
+
+    /*       if (user != null) {
             // User is signed in
             onUserSignedIn();
         } else {
@@ -76,8 +88,7 @@ public class MainActivity extends AppCompatActivity {
 */
 
     private void onUserSignedIn() {
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = user.getUid();
+        String uid = mAuth.getCurrentUser().getUid();
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
