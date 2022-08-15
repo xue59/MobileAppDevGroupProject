@@ -51,8 +51,8 @@ public class TennisCourtDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tennis_court_details);
-        ActionBar actionBar = getSupportActionBar(); // calling the go back bar
-        actionBar.setDisplayHomeAsUpEnabled(true); // showing the go back bar
+//        ActionBar actionBar = getSupportActionBar(); // calling the go back bar 暂时comment掉 action bar
+//        actionBar.setDisplayHomeAsUpEnabled(true); // showing the go back bar暂时comment掉 action bar
         //starts coding here: ....
 
         //code for display photo horizontal RV:
@@ -190,13 +190,13 @@ public class TennisCourtDetails extends AppCompatActivity {
     }
 
     //Back arrow button 后退按键
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        switch (item.getItemId()) {
+//            case android.R.id.home:
+//                onBackPressed();
+//                return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 }
