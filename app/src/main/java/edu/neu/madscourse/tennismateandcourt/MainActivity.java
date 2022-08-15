@@ -77,16 +77,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    /*       if (user != null) {
-            // User is signed in
-            onUserSignedIn();
-        } else {
-            // No user is signed in
-            Log.d(TAG, "I'm here");
-            signIn();
-        }
-*/
-
     private void onUserSignedIn() {
         String uid = mAuth.getCurrentUser().getUid();
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {

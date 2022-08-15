@@ -11,10 +11,11 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:id="@+id/img_viewholder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="centerCrop"
-            android:src="@drawable/tennisappicon" />
+            android:src="@drawable/a_tennis_court" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
